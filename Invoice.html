@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INVOICE</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            background-color: #64ccc5;
+        }
+        * {
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        .main-navbar {
+            width: 100vw;
+            background-color: #f1f1f1;
+            margin-top: 10px;
+        }
+        .container-navbar {
+            width: 96%;
+            background-color: #f1f1f1;
+            margin: auto;
+        }
+        .navbar-identiy {
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+        .logo {
+            padding: 3px 3px;
+            text-align: left;
+        }
+        .logo h2,
+        .logo i {
+            display: inline;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 20px;
+        }
+        .logo i {
+            color: gold;
+            font-size: 20px;
+        }
+        .navbar {
+            text-align: center;
+            padding: 5px 5px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        /* .navbar :last-child{
+            margin-right: -5px;
+        } */
+        .navbar-button {
+            background-color: #35314c;
+            color: #f1f1f1;
+            padding: 7px 10px 7px 10px;
+            border-radius: 5px;
+            font-size: 19px;
+            cursor: pointer;
+        }
+        .search-box {
+            position: relative;
+            text-align: center;
+        }
+        .search-box-two {
+            position: relative;
+            text-align: center;
+        }
+        .search-box input {
+            width: 70%;
+            padding: 10px 45px 10px 10px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            outline: none;
+            font-size: 16px;
+            transition: 0.3s;
+            background-color: #cdcdcd;
+        }
+        .search-box-two input {
+            display: none;
+        }
+        /* <      Media Qurey  Navbar Start           > */
+        @media(max-width:992px) {
+            .logo {
+                font-size: 15px;
+            }
+            .logo>i {
+                font-size: 15px;
+            }
+            .search-box {
+                text-align: center;
+                margin: auto;
+            }
+            .search-box input {
+                padding: 7px 10px 7px 10px;
+                font-size: 13px;
+            }
+            .navbar-button {
+                padding: 5px 8px;
+                font-size: 14px;
+            }
+        }
+        @media(max-width:768px) {
+            .logo {
+                font-size: 12px;
+            }
+            .logo>i {
+                font-size: 12px;
+            }
+            .search-box input {
+                font-size: 12px;
+            }
+            .navbar-button {
+                font-size: 12px;
+            }
+        }
+        @media(max-width:576px) {
+            .logo {
+                font-size: 7px;
+            }
+
+            .logo>i {
+                font-size: 9px;
+            }
+
+            .search-box input {
+                font-size: 8px;
+                display: none;
+            }
+
+            .navbar-button {
+                font-size: 8px;
+            }
+
+            .container-navbar {
+                width: 98%;
+            }
+            .search-box-two input {
+                display: block;
+                margin: auto;
+                width: 80%;
+                margin-top: 5px;
+                padding: 8px 30px 8px 8px;
+                border: 2px solid #ccc;
+                border-radius: 25px;
+                outline: none;
+                font-size: 12px;
+                transition: 0.3s;
+                background-color: #cdcdcd;
+            }
+        }
+        /* <      Media Qurey  Navbar End           > */
+        .main-model {
+            background-color: #f1f1f1;
+            width: 100vw;
+            height: 100%;
+            position: fixed;
+            z-index: 10000;
+            display: none;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+        }
+        .container-model {
+            width: 100%;
+            height: 100vh;
+            background-color: #f1f1f1;
+            margin: auto;
+            border-radius: 5px;
+        }
+        .fa-xmark {
+            float: right;
+            font-size: 20px;
+            margin: 10px 15px 5px 5px;
+            padding: 3px 5px 3px 5px !important;
+            color: #35314c;
+            cursor: pointer;
+            border-radius: 18px;
+            background-color: rgb(159, 138, 138);
+        }
+        .model-logo {
+            text-align: center;
+            font-size: 20px;
+            /* background-color: red; */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #12101d;
+            color: #f1f1f1;
+            padding: 12px;
+            text-align: left;
+            font-size: 16px;
+        }
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        @media(max-width:1200px) {
+            .main-model {
+                height: 100vh !important;
+            }
+        }
+        @media(max-width:992px) {
+            .container-model {
+                width: 100%;
+                height: 100vh;
+                margin-top: 24px;
+            }
+            th {
+                font-size: 14px;
+            }
+            .main-model {
+                height: 100vh !important;
+            }
+        }
+        @media(max-width:768px) {
+            th {
+                font-size: 12px;
+            }
+            .main-model {
+                height: 100vh !important;
+            }
+        }
+        @media(max-width:576px) {
+            th {
+                font-size: 10px;
+            }
+            .main-model {
+                height: 100vh !important;
+            }
+            .fa-xmark {
+                float: right;
+                font-size: 20px;
+                margin-top: 4px;
+            }
+            .product-container .product-info {
+                width: 100% !important;
+            }
+            .product-container .product-info input {
+                margin-top: 0px !important;
+            }
+            .product-container div:first-child {
+                width: 100% !important;
+            }
+            .product-container div:first-child input {
+                width: 100% !important;
+            }
+        }
+        .product-container {
+            padding-top: 30px !important;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 95%;
+            gap: 10px;
+        }
+        .product-container div:first-child {
+            display: flex;
+            gap: 10px;
+            width: 50%;
+        }
+        .product-container div:first-child input {
+            height: 40px;
+            border-radius: 12px;
+            width: 100%;
+            padding: 7.5px;
+            background-color: #cdcdcd;
+            outline-color: #64ccc5;
+            border: none;
+
+        }
+        .product-container div:first-child button {
+            width: 9.5%;
+            height: 40px;
+            border-radius: 12px;
+        }
+        .product-container .product-info input {
+            margin-top: 15px;
+            width: 30%;
+            height: 40px;
+            border-radius: 12px;
+            margin-right: 5px;
+            padding: 7.5px;
+            background-color: #cdcdcd;
+            outline-color: #64ccc5;
+            border: none;
+        }
+        .product-container .product-info button {
+            width: 9.5%;
+            height: 40px;
+            border-radius: 12px;
+            background-color: #35314c;
+            color: #f1f1f1;
+            cursor: pointer;
+        }
+        .product-container .product-info {
+            display: flex;
+            gap: 5px;
+            width: 50%;
+        }
+        @media(min-width:576px) {
+            .product-container {
+                padding: 15px;
+                display: flex;
+                flex-direction: row;
+            }
+            .product-container .product-info input {
+                margin-top: 0px;
+            }
+        }
+        .model-customer-input {
+            width: 95%;
+            margin: auto;
+            padding: 0px 10px 10px 10px;
+        }
+        #customer-name {
+            margin-top: 5px;
+            width: 100%;
+            height: 40px;
+            border-bottom: 1px solid black;
+            margin-right: 5px;
+            padding: 7.5px;
+            background-color: transparent;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            outline: none;
+            text-transform: uppercase;
+        }
+        .model-subtotal {
+            display: flex;
+            justify-content: space-between;
+            width: 20%;
+            margin-left: 40px;
+            margin-top: 20px;
+            align-items: center;
+            font-size: 15px;
+            float: left;
+        }
+        #sub-total {
+            font-size: 30px;
+            text-align: center;
+        }
+        @media(max-width:992px) {
+            #sub-total {
+                font-size: 25px;
+                text-align: center;
+            }
+            .model-subtotal {
+                font-size: 10px;
+                width: 28%;
+            }
+            th,
+            td {
+                font-size: 13px !important;
+            }
+        }
+        @media(max-width:768px) {
+            #sub-total {
+                font-size: 23px;
+                text-align: center;
+
+            }
+            .model-subtotal {
+                font-size: 10px;
+                width: 35%;
+            }
+            th,
+            td {
+                font-size: 12px !important;
+            }
+        }
+        @media(max-width:576px) {
+            #sub-total {
+                font-size: 23px;
+                text-align: center;
+            }
+            .model-subtotal {
+                font-size: 10px;
+                width: 80%;
+                margin-left: 20px;
+            }
+            table {
+                margin: auto;
+                width: 95% !important;
+            }
+            th,
+            td {
+                font-size: 10px !important;
+            }
+        }
+        .invoice-pdf-button {
+            margin-top: 70px;
+            padding: 10px 10px;
+            width: 100vw;
+        }
+        #get-invoice-pdf {
+            font-size: 18px;
+            width: 30%;
+            text-align: center;
+            margin-left: 25px;
+            height: 40px;
+            border-radius: 12px;
+            background-color: #35314c;
+            color: #f1f1f1;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media(max-width: 576px) {
+            .invoice-pdf-button {
+                margin-top: 30px;
+                padding: 12px 15px;
+            }
+            #get-invoice-pdf {
+                font-size: 16px;
+                width: 95% !important;
+                margin-left: auto;
+                margin-right: auto;
+                height: 45px;
+                border-radius: 12px;
+                background-color: #35314c;
+                color: #f1f1f1;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+        .sr-no {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main-table {
+            width: 100vw;
+            margin: auto;
+            margin-top: 70px;
+        }
+        table {
+            margin: auto;
+            width: 70%;
+            text-align: center;
+        }
+        th,
+        td {
+            text-align: center;
+            font-size: 18px;
+        }
+        #cusname {
+            text-decoration: none;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar Start  -->
+    <div class="main-navbar">
+        <div class="container-navbar">
+            <div class="navbar-identiy">
+                <div class="logo">
+                    <h2>TAHA SWEET </h2>
+                    <i class="fa-solid fa-cake-candles"></i>
+                </div>
+                <div class="navbar">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search..." class="search-input">
+                    </div>
+                    <button id="btn" onclick="openmodal()" class="navbar-button">Add Invoice</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="search-box-two">
+        <input type="text" placeholder="Search..." class="search-input">
+    </div>
+    <!-- Navbar End  -->
+    <!-- Model Start -->
+    <div class="main-model" id="model">
+        <div class="container-model">
+            <div>
+                <h4><i class="fa-solid fa-xmark marks" onclick="modalClose()"></i></h4>
+            </div>
+            <div class="model-logo">
+                <h2>Invoice</h2>
+            </div>
+            <div class="model-customer-input">
+                <input type="text" id="customer-name" placeholder="customer name*">
+            </div>
+            <div class="product-container">
+                <div class="product">
+                    <input type="text" id="Product-Name">
+                </div>
+                <div class="product-info">
+                    <input type="number" id="qty" placeholder="Qty" oninput="Calculate(this)">
+                    <input type="number" id="price" placeholder="Price" oninput="hanldePrice(this)">
+                    <input type="number" placeholder="Total" disabled id="total">
+                    <button onclick="addMore()"><i class="fa-solid fa-plus"></i></button>
+                </div>
+            </div>
+            <div class="model-subtotal">
+                <h1>Sub Total:</h1>
+                <h1 id="sub-total"> </h1>
+            </div>
+            <div class="invoice-pdf-button">
+                <button id="get-invoice-pdf" onclick="getInvoicePdf()">Get Invoice PDF</button>
+            </div>
+        </div>
+    </div>
+    <div class="main-table">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Sr#</th>
+                    <th>Invoice ID</th>
+                    <th>Customer Name</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody id="invoice-body">
+            </tbody>
+        </table>
+    </div>
+    <!-- Model End -->
+    <script>
+        function searchInvoice() {
+            let inputs = document.querySelectorAll(".search-input");
+            let searchValues = Array.from(inputs).map(input => input.value.toLowerCase());
+            let tableRows = document.querySelectorAll("#invoice-body tr");
+            let allEmpty = searchValues.every(value => value === "");
+            tableRows.forEach(row => {
+                let customerName = row.querySelector("td:nth-child(3)").innerText.toLowerCase();
+                let invoiceNumber = row.querySelector("td:nth-child(2)").innerText.toLowerCase();
+                if (allEmpty) {
+                    row.style.display = "";
+                } else {
+                    let match = searchValues.some(value =>
+                        (customerName.includes(value) || invoiceNumber.includes(value)) && value !== "");
+                    row.style.display = match ? "" : "none";
+                }
+            });
+        }
+        document.querySelectorAll(".search-input").forEach(input => {
+            input.addEventListener("keyup", searchInvoice);
+        });
+        let COUNTER = 1;
+        let rNo = 0;
+        function getInvoicePdf() {
+            let customerNameInput = document.getElementById('customer-name');
+            let productNameInput = document.getElementById('Product-Name');
+            let qtyInput = document.getElementById('qty');
+            let priceInput = document.getElementById('price');
+            let totalInput = document.getElementById('total');
+            if (
+                customerNameInput.value.trim() === '' ||
+                productNameInput.value.trim() === '' ||
+                qtyInput.value.trim() === '' ||
+                priceInput.value.trim() === '' ||
+                totalInput.value.trim() === ''
+            ) {
+                alert('Please enter all required inputs!');
+                return;
+            }
+            let customerName = customerNameInput.value;
+            let productName = productNameInput.value;
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(22);
+            doc.setTextColor(0, 0, 255);
+            doc.text("INVOICE", 105, 20, null, null, 'center');
+            doc.setFontSize(12);
+            doc.setTextColor(0, 0, 0);
+            doc.text("Customer Name:", 20, 40);
+            doc.setFont("helvetica", "bold");
+            doc.text(customerName, 60, 40);
+            let yPosition = 55;
+            doc.setFont("helvetica", "bold");
+            doc.setFillColor(220, 220, 220);
+            doc.rect(20, yPosition, 170, 10, 'F');
+            doc.text("No.", 25, yPosition + 7);
+            doc.text("Product Name", 50, yPosition + 7);
+            doc.text("Quantity", 110, yPosition + 7);
+            doc.text("Price", 140, yPosition + 7);
+            doc.text("Total", 170, yPosition + 7);
+            yPosition += 17;
+            let totalSum = 0;
+            const productContainers = document.querySelectorAll('.product-container');
+            productContainers.forEach((container, index) => {
+                const productName = container.querySelector('.product input').value;
+                const qty = container.querySelector('.product-info input:nth-child(1)').value;
+                const price = container.querySelector('.product-info input:nth-child(2)').value;
+                const total = container.querySelector('.product-info input:nth-child(3)').value;
+                doc.setFont("helvetica", "normal");
+                doc.text((index + 1).toString(), 25, yPosition);
+                doc.text(productName, 50, yPosition);
+                doc.text(qty, 120, yPosition, { align: "right" });
+                doc.text(price, 150, yPosition, { align: "right" });
+                doc.text(total, 181, yPosition, { align: "right" });
+                yPosition += 7;
+                if (yPosition > 250) {
+                    doc.addPage();
+                    yPosition = 20;
+                    doc.text("INVOICE (continued)", 105, yPosition, null, null, 'center');
+                    yPosition += 10;
+                }
+                totalSum += Number(total) || 0;
+            });
+            yPosition += 10;
+            doc.setTextColor(255, 255, 255);
+            doc.setFont("helvetica", "bold");
+            doc.setFillColor(0, 102, 204);
+            doc.rect(125, yPosition - 6, 65, 10, 'F');
+            doc.text("Subtotal:         ", 130, yPosition);
+            doc.text("       " + totalSum.toFixed(2), 180, yPosition, { align: "right" });
+            doc.setTextColor(0, 0, 0);
+            doc.save("invoice.pdf");
+            let tableBody = document.getElementById('invoice-body');
+            let subTotalHeading = document.getElementById('sub-total');
+            let subTotalValue = subTotalHeading ? subTotalHeading.innerText : "0";
+            let datas = JSON.parse(localStorage.getItem('data')) || [];
+            let min = 1;
+            let max = 1000;
+            let randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            let newInvoice = {
+                rNo: datas.length + 1,
+                invoiceNumber: randomNumber,
+                customerName: customerName,
+                subTotal: subTotalValue
+            };
+            datas.push(newInvoice);
+            localStorage.setItem('data', JSON.stringify(datas));
+            loadTableData();
+            modalClose();
+        }
+        function loadTableData() {
+            let tableBody = document.getElementById('invoice-body');
+            let savedData = JSON.parse(localStorage.getItem('data')) || [];
+            tableBody.innerHTML = "";
+            savedData.forEach((invoice, index) => {
+                let newRow = `
+            <tr>
+                <td>${index + 1}</td>
+                <td>${invoice.invoiceNumber}</td>
+                <td>${invoice.customerName}</td>
+                <td>${invoice.subTotal}</td>
+            </tr>
+        `;
+                tableBody.innerHTML += newRow;
+            });
+            document.getElementById('customer-name').value = ''
+            document.getElementById('Product-Name').value = '';
+            document.getElementById('qty').value = '';
+            document.getElementById('price').value = '';
+            document.getElementById('total').value = '';
+            document.getElementById('sub-total').innerHTML = '';
+            let containers = document.querySelectorAll(".container-model .product-container");
+            if (containers.length > 1) {
+                containers.forEach((container, index) => {
+                    if (index !== 0) {
+                        container.remove();
+                    }
+                });
+            }
+        }
+        window.onload = function () {
+            loadTableData();
+        };
+        function Calculate(element) {
+            let qty = element.value
+            let price = element.nextElementSibling.value
+            let total_price = element.nextElementSibling.nextElementSibling
+            total = qty * price
+            total_price.value = total
+        }
+
+        function hanldePrice(element) {
+            let price = element.value
+            let qty = element.previousElementSibling.value
+            let total_price = element.nextElementSibling
+            total = qty * price
+            total_price.value = total
+            gettotal()
+        }
+        function gettotal() {
+            let sum = 0;
+            let totalInputs = document.querySelectorAll('.product-info input[id="total"]')
+            let subTotalHeading = document.getElementById('sub-total');
+            totalInputs.forEach(input => {
+                sum += Number(input.value) || 0;
+            });
+            subTotalHeading.textContent = sum;
+            console.log(totalInput.value);
+        }
+        function openmodal() {
+            let navbar = document.getElementById('btn')
+            let model = document.getElementById('model')
+            let firstProCon = document.getElementsByClassName('product-container')[0].firstElementChild.firstElementChild
+            firstProCon.placeholder = `${1} - Product Name*`
+            model.style.display = "flex"
+        }
+        function modalClose() {
+            model.style.display = "none"
+        }
+        function addMore() {
+            let model = document.querySelector('.container-model')
+            let subtotalDiv = document.querySelector('.model-subtotal');
+            let pdfButtonDiv = document.querySelector('.invoice-pdf-button');
+            let container = `<div class="product-container">
+                                <div class="product">
+                                    <input type="text"  id="Product-Name" placeholder="${1} - Product Name*">
+                                </div>
+                                <div class="product-info">
+                                    <input type="number" id="qty"  placeholder="Qty" oninput="Calculate(this)">
+                                    <input type="number" id="price" placeholder="Price" oninput="hanldePrice(this)">
+                                    <input type="number"  placeholder="Total" disabled id="total">
+                                    <button onclick="removeContainer(this)"><i class="fa-solid fa-minus"></i></button>
+                                </div>
+                            </div> `
+            model.insertAdjacentHTML('beforeend', container);
+            model.appendChild(subtotalDiv);
+            model.appendChild(pdfButtonDiv);
+            COUNTER++;
+            let productContainers = document.querySelectorAll(".container-model>.product-container")
+            productContainers.forEach((container, index) => {
+                const input = container.firstElementChild.firstElementChild;
+                input.placeholder = `${index + 1} - Product Name*`;
+            });
+        }
+        function removeContainer(element) {
+            let parent = element.parentElement.parentElement
+            parent.remove()
+            let productContainers = document.querySelectorAll(".container-model>.product-container")
+            productContainers.forEach((container, index) => {
+                const input = container.firstElementChild.firstElementChild;
+                input.placeholder = `${index + 1} - Product Name*`;
+            });
+            console.log(productContainers)
+        }
+
+    </script>
+</body>
+</html>
