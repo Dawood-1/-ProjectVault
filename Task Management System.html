@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        /*     Fix css start      */
+
+
+        /*     Fix css End      */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+        @font-face {
+            font-family: "GRIFTER";
+            src: url(../assets/fonts/GRIFTER\ Bold\ 700.otf), format('onetype');
+        }
+
+        * {
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-family: 'GRIFTER', sans-serif;
+
+        }
+
+        .main-navbar {
+            width: 100vw;
+            background-color: black;
+            border-bottom: 4px solid;
+            box-shadow: 0px 0px 10px rgb(62, 60, 60);
+            z-index: 9000;
+            position: absolute;
+            top: 0px;
+        }
+
+        .container-navbar {
+            width: 92vw;
+            background-color: black;
+
+            margin: auto;
+        }
+
+        .navbar-identy {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 10px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar-a {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .navbar-a>i {
+            font-size: 2vw;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .navbar-a>.navbar-button {
+            font-weight: bolder;
+            padding: 8px 10px;
+            border-radius: 5px;
+            /* border-color: yellow; */
+            cursor: pointer;
+            color: black;
+            outline: none;
+            background-color: white;
+            transition: all .4s ease-in-out;
+            border: none;
+            border: 1px solid transparent !important;
+
+        }
+
+        .navbar-a>.navbar-button:hover {
+            background-color: black;
+            color: white;
+            border: 1px solid white !important;
+        }
+
+        /*    Start  media Query For Navbar  Top      */
+
+        @media(max-width:1400px) {
+            /* Every Thing Ok This 1400px */
+        }
+
+        @media(max-width:1200px) {
+            /* Every Thing Ok This 1200px */
+        }
+
+        @media(max-width:992px) {
+            .logo {
+                font-size: 20px !important;
+            }
+
+            .navbar-a>i {
+                font-size: 2.7vw;
+            }
+
+        }
+
+        @media(max-width:768px) {
+            .logo {
+                font-size: 20px !important;
+            }
+
+            .navbar-a>i {
+                font-size: 3.5vw;
+            }
+
+            .navbar-a>.navbar-button {
+                font-size: 2vw;
+            }
+
+            .navbar-a {
+                gap: 38px;
+            }
+        }
+
+        @media(max-width:576px) {
+            .logo {
+                font-size: 16px !important;
+            }
+
+            .navbar-a>i {
+                font-size: 3.7vw;
+            }
+
+            .navbar-a>.navbar-button {
+                font-size: 2.3vw;
+            }
+
+            .container-navbar {
+                width: 95vw;
+            }
+        }
+
+        /*    End media Query For Navbar  Top      */
+
+        /*  Start  Modal Custamor Css */
+
+        .model-main {
+            width: 100vw;
+            background-color: #f6bc54;
+            z-index: 10000;
+            height: 100vh;
+            position: fixed;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            top: 0px;
+
+        }
+
+        .model-container {
+            width: 30vw;
+            background-color: whitesmoke;
+            height: 500px;
+            margin: auto;
+            /* margin-top: 30px; */
+        }
+
+        .box-main {
+            width: 100vw;
+            background-color: transparent;
+
+        }
+
+        .box-container {
+            width: 40vw;
+            background-color: white;
+            margin: auto;
+            text-align: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px white;
+        }
+
+        @media(max-width:576px) {
+            .box-container {
+                width: 100vw !important;
+                /* background-color: #f6bc54; */
+
+                height: 100vh;
+                text-align: center;
+                border-radius: 0px;
+                background-color: white;
+
+
+            }
+
+
+        }
+
+        .popup-head {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            width: 100%;
+            position: relative;
+            z-index: 15;
+            overflow: hidden !important;
+
+        }
+
+        .popup-head>h2 {
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: right;
+            position: absolute;
+            text-align: center;
+            z-index: -10;
+            font-size: 28px;
+        }
+
+        .popup-head>i {
+            overflow: hidden !important;
+        }
+
+        .marks {
+            float: right;
+            margin-right: 0px;
+            font-size: 1.5vw;
+            border-radius: 50%;
+            padding: 3px 5px;
+            background-color: rgb(212, 203, 203);
+            cursor: pointer;
+            margin-bottom: 15px;
+
+        }
+
+        /* form {
+            line-height: 20px;
+
+        } */
+
+        input[type=text] {
+            width: 100%;
+            /* outline-color: rgb(3, 196, 259); */
+            padding: 8px 4px;
+            border-radius: 8px;
+            border-color: black;
+            margin-bottom: 15px;
+        }
+
+        .labels {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .check-label {
+
+            display: flex;
+        }
+
+        ::placeholder {
+            padding: 0 0 0 5px;
+            font-size: 1vw;
+            color: black;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            /* outline-color: rgb(3, 196, 259); */
+            border-color: black;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            padding: 8px;
+        }
+
+        #btn {
+            background-color: black;
+            color: white;
+            width: 100%;
+            padding: 10px 10px;
+            margin-top: 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2vw;
+            border: none;
+            text-align: center;
+        }
+
+        .last {
+            margin-top: 20px;
+
+        }
+
+        .last h3>i {
+            text-decoration: none;
+            font-size: 1.3vw;
+            color: black;
+        }
+
+        /*  End  Modal Custamor Css */
+
+
+
+        /*     Start  Modal Media Qurey       */
+        @media(max-width:992px) {
+            .box-container {
+                width: 55%;
+            }
+
+            input[type=text] {
+                width: 90%;
+            }
+
+            ::placeholder {
+                font-size: 1.5vw;
+            }
+
+            .labels {
+                font-size: 2vw;
+            }
+
+            .check-label {
+                padding-left: 24px;
+            }
+
+            textarea {
+                width: 90%;
+            }
+
+            #btn {
+                font-size: 1.5vw;
+                width: 45vw;
+            }
+
+            .marks {
+                font-size: 2vw;
+            }
+
+            .comon span {
+                font-size: 22px !important;
+            }
+
+            .card-status {
+                font-size: 20px !important;
+            }
+
+            #data-table tr td:last-child label {
+                font-size: 9px !important;
+
+            }
+        }
+
+        @media(max-width:768px) {
+            .box-container {
+                width: 70%;
+            }
+
+            .popup-head>h2 {
+                font-size: 20px;
+            }
+
+            input[type=text] {
+                width: 90%;
+
+            }
+
+            .labels {
+                font-size: 2.6vw;
+            }
+
+            .check-label {
+                padding-left: 25px;
+            }
+
+            textarea {
+                width: 90%;
+            }
+
+            #btn {
+                font-size: 2vw;
+                width: 55vw;
+            }
+
+            .marks {
+                font-size: 2.2vw;
+            }
+
+            .card-status {
+                font-size: 16px !important;
+            }
+
+            h3 {
+                font-size: 30px;
+            }
+
+            /* .box-sec{
+                display: flex;
+                flex-direction: column;
+            } */
+
+            table {
+                width: 90% !important;
+            }
+
+            .des {
+                width: 23% !important;
+            }
+
+            .ugnt {
+                width: 13% !important;
+            }
+
+            .opt {
+                width: 13% !important;
+            }
+
+            .stus {
+                width: 15% !important;
+            }
+
+            #data-table tr td:last-child label {
+                font-size: 12px !important;
+
+            }
+        }
+
+        @media(max-width:576px) {
+            .box-container {
+                width: 80%;
+            }
+
+            input[type=text] {
+                width: 95%;
+            }
+
+            ::placeholder {
+                font-size: 2.2vw;
+            }
+
+            .labels {
+                font-size: 3.4vw;
+            }
+
+            .check-label {
+                padding-left: 10px;
+            }
+
+            table {
+                width: 90%;
+            }
+
+            textarea {
+                width: 95%;
+            }
+
+            #btn {
+                font-size: 3vw;
+                width: 70vw;
+            }
+
+            .marks {
+                font-size: 3vw;
+            }
+
+
+
+            table,
+            th {
+                font-size: 3vw;
+            }
+
+            table {
+                width: 90%;
+            }
+
+            .card-status {
+                font-size: 12px !important;
+
+            }
+
+            #comp {
+                font-size: 18px !important;
+
+            }
+
+            .srno {
+                width: 6% !important;
+            }
+
+            .tit {
+                width: 9% !important;
+            }
+
+
+            .ugnt {
+                width: 13% !important;
+            }
+
+            .opt {
+                width: 18% !important;
+            }
+
+            .stus {
+                width: 22% !important;
+            }
+
+            #data-table tr td:last-child label {
+                font-size: 7px !important;
+                /* font-weight: bolder; */
+                padding: 0px;
+
+            }
+
+            .comon {
+
+                height: 120px !important;
+            }
+
+            #btn {
+                background-color: black;
+                color: white;
+                width: 100%;
+            }
+
+        }
+
+        @media(max-width:700px) {
+            .media {
+                display: none !important;
+            }
+
+            .des {
+                display: none !important;
+            }
+
+            .srno {
+                width: 9% !important;
+            }
+
+            .tit {
+                width: 19% !important;
+            }
+
+
+            .ugnt {
+                width: 19% !important;
+            }
+
+            .opt {
+                width: 18% !important;
+            }
+
+            .stus {
+                width: 22% !important;
+            }
+        }
+
+        /*     End  Modal Media Qurey       */
+
+        @media(max-width:420px) {
+            table {
+                width: 90% !important;
+            }
+
+            .fa-pen-to-square {
+                font-size: 16px !important;
+            }
+
+            .fa-trash {
+                font-size: 16px !important;
+            }
+        }
+
+        .srno {
+            width: 5%;
+        }
+
+        .tit {
+            width: 10%;
+        }
+
+        .des {
+            width: 40%;
+        }
+
+        .ugnt {
+            width: 10%;
+        }
+
+        .opt {
+            width: 10%;
+        }
+
+        .stus {
+            width: 13%;
+        }
+
+        @media(max-width:320px) {
+            table {
+                width: 90% !important;
+            }
+
+            #comp {
+                font-size: 16px !important;
+            }
+
+            @media(max-width:330px) {
+                .stus {
+                    width: 25% !important;
+                }
+
+                #data-table tr td:last-child label {
+                    font-size: 7px !important;
+                    /* font-weight: bolder; */
+                    padding: 0px;
+                    display: flex;
+                    gap: 0px;
+                }
+            }
+        }
+
+        table {
+            width: 88%;
+            border-collapse: collapse;
+            /* margin: 20px 0; */
+            margin: auto;
+            margin-top: 50px;
+
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 6px;
+            text-align: center;
+        }
+
+        .fa-waze {
+            font-size: 20px;
+            color: white;
+        }
+
+        .fa-waze:hover {
+            cursor: pointer;
+            color: rgb(5, 5, 5);
+        }
+
+        .navbar-button {
+            display: flex;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        #one {
+            background-color: #9e9bff;
+        }
+
+        #two {
+            background-color: #eca7fe;
+        }
+
+        #three {
+            background-color: #f6bc54;
+        }
+
+        #four {
+            background-color: #5cd669;
+        }
+
+        .box-container-show-data {
+            width: 90%;
+            padding: 10px;
+            padding-top: 90px;
+            padding-bottom: 10px;
+            text-align: center;
+            margin: auto;
+
+        }
+
+        .flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .comon {
+            flex: 1 1 calc(50% - 10px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            padding: 13px 20px;
+            text-align: center;
+            font-size: 35px;
+            font-weight: 400 !important;
+            border: 1.5px solid black;
+            /* background-color:#9e9bff; */
+            height: 176px;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-status {
+            /* background-color: #5cd669; */
+            text-align: left;
+            width: 100%;
+            display: block;
+            margin-top: 8px;
+        }
+
+        .comon span {
+            font-size: 26px;
+        }
+
+        .comon i {
+            overflow-y: hidden;
+            font-size: 22px;
+            color: black;
+        }
+
+        .icon-ground {
+            background-color: white;
+            width: 35px;
+            height: 35px;
+            padding: 5px;
+            border-radius: 50%;
+            border: 1px solid black;
+            overflow-y: hidden !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .7s;
+        }
+
+        .icon-ground:hover {
+            background-color: black;
+            cursor: pointer;
+        }
+
+        .icon-ground:hover i {
+            color: white;
+        }
+
+        .flexx {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+
+        @media (max-width: 730px) {
+            .comon {
+                flex: 1 1 calc(50% - 10px);
+            }
+        }
+
+
+        @media (min-width: 750px) {
+            .comon {
+                flex: 1 1 calc(24% - 10px);
+            }
+
+        }
+
+        table {
+            table-layout: fixed;
+        }
+
+        .row {
+            background: linear-gradient(135deg, #34bfa3, #2a7fd2);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+
+
+        }
+
+        .row:hover {
+            background: linear-gradient(135deg, #2a7fd2, #34bfa3);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+
+        }
+
+        #data-table tr td:last-child {
+            padding: 3px;
+        }
+
+        #data-table tr td:last-child div {
+            display: flex;
+            height: 100% !important;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            border: none;
+        }
+
+        #data-table tr td:last-child input {
+            display: block;
+        }
+
+        #data-table tr td:last-child label {
+            font-size: 13px;
+            display: block;
+            background-color: red;
+            padding: 2px 4px 2px 4px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .showw-data {
+            margin-top: -20px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--   Start Top Navbar       -->
+    <section>
+        <div class="main-navbar">
+            <div class="container-navbar">
+                <div class="navbar-identy">
+                    <div class="logo">
+                        <h1>TaskApp </h1>
+                    </div>
+                    <div class="navbar-a">
+                        <i class="fa-regular fa-sun" id="mode" onclick="mode(this)"></i>
+                        <button class="navbar-button" onclick="openmodel()">Add Taks</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--   End Top Navbar       -->
+    <!--   Register Start Modal        -->
+    <div class="model-main" id="model">
+        <div class="model-identi">
+            <div class="box-main">
+                <div class="box-container">
+                    <div class="popup-head">
+                        <h2>Register Task</h2>
+                        <i class="fa-solid fa-xmark marks" onclick="modalClose()"></i>
+                    </div>
+                    <form action="">
+                        <input type="text" id="taks" placeholder="Taks">
+                        <textarea name="message" id="des" placeholder="Description" rows="6" cols="40"></textarea>
+                        <div class="check-label">
+                            <div>
+                                <input type="checkbox" class="labels" id="check">
+                                &nbsp; <label for="check" class="labels">Urgent </label>
+                            </div>
+                        </div>
+                        <button id="btn" onclick="Login()">Register</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--   Register End Modal        -->
+
+    <!--   Edit Start Modal        -->
+    <div class="model-main" id="edit-model">
+        <div class="model-identi">
+            <div class="box-main">
+                <div class="box-container">
+                    <div class="popup-head">
+                        <h2>Edit Task</h2>
+                        <i class="fa-solid fa-xmark marks" onclick="EditModalClose()"></i>
+                    </div>
+                    <form action="">
+                        <input type="text" id="edit-taks" placeholder="Taks">
+                        <textarea name="message" id="edit-des" placeholder="Description" rows="6" cols="40"></textarea>
+                        <div class="check-label">
+                            <div>
+                                <input type="checkbox" class="labels" id="edit-check">
+                                &nbsp; <label for="check" class="labels">Urgent </label>
+                            </div>
+                        </div>
+                        <input type="text" id="task-id" hidden>
+                        <button id="btn" type="button" onclick="editTask(this)">Save Changes</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--   Edit End Modal        -->
+    <div class="box-container-show-data">
+        <div class="flex">
+            <div class=" comon " id="one">
+                <div class="card-header">
+                    <div>
+                        <h3 id="pending">0</h3>
+                    </div>
+                    <div> <span class="icon-ground"> <i class="fa-solid fa-ellipsis"></i></span> </div>
+                </div>
+                <span class="card-status">Pending</span>
+            </div>
+            <div class=" comon " id="two">
+                <div class="card-header">
+                    <div>
+                        <h3 id="total">0</h3>
+                    </div>
+                    <div> <span class="icon-ground"> <i class="fa-solid fa-ellipsis"></i></span> </div>
+                </div>
+                <span class="card-status">Total</span>
+            </div>
+            <div class=" comon " id="three">
+                <div class="card-header">
+                    <div>
+                        <h3 id="urgent">0</h3>
+                    </div>
+                    <div> <span class="icon-ground"> <i class="fa-solid fa-ellipsis"></i></span> </div>
+                </div>
+                <span class="card-status">Urgent</span>
+            </div>
+            <div class=" comon " id="four">
+                <div class="card-header">
+                    <div>
+                        <h3 id="completed">0</h3>
+                    </div>
+                    <div> <span class="icon-ground"> <i class="fa-solid fa-ellipsis"></i></span> </div>
+                </div>
+                <span class="card-status" id="comp">Completed</span>
+            </div>
+        </div>
+    </div>
+    <div class="showw-data">
+        <table id="data-table" width="100%">
+            <thead>
+                <tr class="row">
+                    <th class="srno">Sr</th>
+                    <th class="tit">Title</th>
+                    <th class="des">Description</th>
+                    <th class="ugnt">Urgent</th>
+                    <th class="opt">Optaions</th>
+                    <th class="stus">Status</th>
+                </tr>
+            </thead>
+            <tbody id="records">
+        </table>
+    </div>
+    <script>
+        function mode(el) {
+            console.log(el.classList[1])
+            if (el.classList.contains("fa-sun")) {
+                el.classList.replace("fa-sun", "fa-moon")
+                localStorage.setItem('darkMode', "on")
+
+                if (document.body.style.backgroundColor === 'gray') {
+                    document.body.style.backgroundColor = 'white'
+                    localStorage.setItem('backgroundColor', 'white')
+                }
+            }
+            else {
+                el.classList.replace("fa-moon", "fa-sun")
+                localStorage.setItem('darkMode', "off")
+                document.body.style.backgroundColor = 'gray';
+                localStorage.setItem('backgroundColor', 'gray')
+            }
+        }
+        function completedTasks(ctasks) {
+        }
+        window.onload = () => {
+            let mode = document.getElementById('mode')
+            let darkMode = localStorage.getItem("darkMode")
+            if (darkMode === "on") {
+                mode.classList.replace("fa-sun", "fa-moon")
+                let get = localStorage.getItem('backgroundColor')
+                if (get) {
+                    document.body.style.backgroundColor = get
+                }
+            } else {
+                mode.classList.replace("fa-moon", "fa-sun")
+                document.body.style.backgroundColor = 'gray'
+            }
+            let taskList = JSON.parse(localStorage.getItem('user'))
+            let completedTask = taskList.filter(task => task.completed === true).length
+            document.getElementById("completed").innerText = completedTask
+            let UnCompletedTask = taskList.filter(task => task.completed === false).length
+            document.getElementById("pending").innerText = UnCompletedTask
+            getUrgentTasks(taskList)
+            document.getElementById('total').innerText = taskList.length
+        }
+        function openmodel() {
+            let modelget = document.getElementById('model')
+            modelget.style.display = "flex"
+        }
+        function openEditModel() {
+            let modelget = document.getElementById('edit-model')
+            modelget.style.display = "flex"
+        }
+        function modalClose() {
+            let close = document.getElementById('model')
+            close.style.display = "none"
+        }
+        function EditModalClose() {
+            let close = document.getElementById('edit-model')
+            close.style.display = "none"
+        }
+        let count = 1;
+        let conbain = [];
+        let objstr = localStorage.getItem('user');
+        console.log(conbain)
+        if (objstr != null) {
+            conbain = JSON.parse(objstr)
+        }
+        display()
+        function Login() {
+            event.preventDefault()
+            let Task = document.getElementById('taks').value;
+            let Description = document.getElementById('des').value;
+            let Check = document.getElementById('check')
+            let isChecked = Check.checked ? "True" : "False"
+            let recordPlay = document.getElementById('records')
+            let btnText = document.getElementById('btn')
+            let btnTextTWO = btnText.innerText
+            btnText.innerText = btnTextTWO
+            conbain.push({
+                'Task': Task,
+                'Description': Description,
+                'Check': Check,
+                'isChecked': isChecked,
+                'completed': false
+            });
+            let edit_index = null;
+            let tablebody = document.getElementById('data-table').querySelector('tbody');
+            saveInfo(conbain)
+            document.getElementById('taks').value = " ";
+            document.getElementById('des').value = " ";
+            document.getElementById('check')
+            Check.checked = false;
+            let close = document.getElementById('model')
+            close.style.display = "none"
+            let objstr = localStorage.getItem('user');
+            console.log(conbain)
+            if (objstr != null) {
+                conbain = JSON.parse(objstr)
+                getUrgentTasks(conbain)
+                document.getElementById('total').innerText = conbain.length
+            }
+            display()
+        }
+        function getUrgentTasks(array) {
+            UrgentTasks = array.filter(array => array.isChecked === 'True')
+            document.getElementById('urgent').innerText = UrgentTasks.length
+            return UrgentTasks
+        }
+        function saveInfo(conbain) {
+            let str = JSON.stringify(conbain)
+            localStorage.setItem('user', str);
+        }
+        function handleCompleted(element) {
+            if (element.checked) {
+                element.nextElementSibling.innerText = 'completed'
+                element.nextElementSibling.style.backgroundColor = 'rgb(92, 212, 17)'
+            } else {
+                element.nextElementSibling.innerText = 'uncompleted'
+                element.nextElementSibling.style.backgroundColor = 'red'
+            }
+            let id = element.id
+            let tasks = JSON.parse(localStorage.getItem('user'))
+            let task = tasks[id]
+            if (element.checked) {
+                task.completed = true
+            } else {
+                task.completed = false
+            }
+            tasks[id] = task
+            localStorage.setItem('user', JSON.stringify(tasks));
+            let completedTask = tasks.filter(task => task.completed === true).length
+            let UnCompletedTask = tasks.filter(task => task.completed === false).length
+            document.getElementById("completed").innerText = completedTask
+            document.getElementById("pending").innerText = UnCompletedTask
+        }
+        function display() {
+            let statment = '';
+            conbain.forEach((user, index) => {
+                statment += ` <tr>
+            <td>${index + 1}</td>  
+            <td>${user.Task}</td>  
+            <td class='media'>${user.Description}</td> 
+            <td>${user.isChecked}</td>  
+            <td>
+               <i class="fa-solid fa-pen-to-square" style="color: #007bff; font-size: 20px;" onclick="Edit(${index})"></i>
+                <i class="fa-solid fa-trash" style="color: #dc3545; font-size: 20px;" onclick="Del(${index})"></i>
+            </td>
+          <td> <div> <input type="checkbox" id='${index}' onchange='handleCompleted(this)' ${user.completed ? 'checked' : ''}><label for="${index}" style="background-color:${user.completed ? 'rgb(92, 212, 17)' : 'red'}">
+                            ${user.completed ? 'completed' : 'uncompleted'}</label><div></td>
+
+        </tr>`;
+            });
+            let recordPlay = document.getElementById('records');
+            recordPlay.innerHTML = statment;
+        }
+        let chck = document.getElementById('getcom');
+        let yesChecked = chck.checked ? "True" : "False";
+        console.log(yesChecked);
+        let taskOne = document.getElementById('getcom')
+        taskOne.addEventListener('change', function (event) {
+            if (taskOne.checked) {
+                this.nextElementSibling.innerText = 'completed'
+            }
+            else {
+                this.nextElementSibling.innerText = 'uncompleted'
+            }
+        })
+        function Edit(index) {
+            openEditModel();
+            let task = conbain[index];
+            let Task = document.getElementById('edit-taks').value = task.Task
+            let Description = document.getElementById('edit-des').value = task.Description
+            task.isChecked === "True" ? document.getElementById('edit-check').checked = true : document.getElementById('edit-check').checked = false;
+            document.getElementById('task-id').value = index
+        }
+        function editTask(element) {
+            let tasks = JSON.parse(localStorage.getItem('user'))
+            task = element.previousElementSibling.value
+            process_task = tasks[task]
+            process_task.Task = document.getElementById('edit-taks').value
+            process_task.Description = document.getElementById('edit-des').value
+            process_task.isChecked = document.getElementById('edit-check').checked ? "True" : " False"
+            tasks[task] = process_task
+            localStorage.setItem("user", JSON.stringify(tasks))
+            EditModalClose()
+            location.reload();
+
+
+        }
+        function Del(index) {
+            // alert(index);
+            conbain.splice(index, 1)
+            saveInfo(conbain)
+            display()
+            let taskList = JSON.parse(localStorage.getItem('user'))
+            getUrgentTasks(taskList)
+            document.getElementById('total').innerText = taskList.length
+
+        }
+    </script>
+</body>
+
+</html>
